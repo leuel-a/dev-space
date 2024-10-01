@@ -1,4 +1,4 @@
-# Dev-Space
+# Dev Space
 
 Dev-Space is a real-time collaborative code editor designed to enable multiple users to work together on the same codebase in real time. This project aims to offer a powerful, cloud-based platform for developers to collaborate seamlessly on coding projects, with features like real-time code synchronization, version control, and role-based access management.
 
