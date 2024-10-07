@@ -11,9 +11,9 @@ importers:
       bcrypt:
         specifier: ^5.1.1
         version: 5.1.1
-      body-parser:
-        specifier: ^1.20.3
-        version: 1.20.3
+      connect-session-sequelize:
+        specifier: ^7.1.7
+        version: 7.1.7(sequelize@6.37.3(pg-hstore@2.3.4)(pg@8.13.0))
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
@@ -526,6 +526,12 @@ packages:
 
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
+
+  connect-session-sequelize@7.1.7:
+    resolution: {integrity: sha512-Wqq7rg0w+9bOVs6jC0nhZnssXJ3+iKNlDVWn2JfBuBPoY7oYaxzxfBKeUYrX6dHt3OWEWbZV6LJvapwi76iBQQ==}
+    engines: {node: '>= 10'}
+    peerDependencies:
+      sequelize: '>= 6.1.0'
 
   console-control-strings@1.1.0:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
@@ -2120,6 +2126,13 @@ snapshots:
     optional: true
 
   concat-map@0.0.1: {}
+
+  connect-session-sequelize@7.1.7(sequelize@6.37.3(pg-hstore@2.3.4)(pg@8.13.0)):
+    dependencies:
+      debug: 4.3.7(supports-color@5.5.0)
+      sequelize: 6.37.3(pg-hstore@2.3.4)(pg@8.13.0)
+    transitivePeerDependencies:
+      - supports-color
 
   console-control-strings@1.1.0: {}
 

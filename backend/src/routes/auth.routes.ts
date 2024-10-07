@@ -1,7 +1,9 @@
-import {Router} from 'express'
-import {registerUserHandler} from '../handlers/auth.handlers'
-import {validateResource} from '../middlewares/validateResource'
-import {registerUserSchema} from '../schemas/users.schema'
+import { Router } from 'express'
+import passport from 'passport'
+
+import { validateResource } from '../middlewares/validateResource'
+import { loginUserHandler, registerUserHandler } from '../handlers/auth.handlers'
+import { loginUserSchema, registerUserSchema } from '../schemas/users.schema'
 
 const router = Router()
 
@@ -29,9 +31,32 @@ const router = Router()
 router.post('/register', validateResource(registerUserSchema), registerUserHandler)
 
 /**
- *
+ * @openapi
+ * /api/auth/login/password:
+ *  post:
+ *    tags:
+ *      - Auth
+ *    summary: Login a user
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/LoginUserInput'
+ *    responses:
+ *      200:
+ *        description: Success
+ *      401:
+ *        description: Unauthorized
+ *        content:
+ *          text/plain:
+ *            schema:
+ *              type: string
+ *              example: Unauthorized
+ *      400:
+ *        description: Bad request
  */
-router.post('/login')
+router.post('/login/password', validateResource(loginUserSchema), passport.authenticate('local'), loginUserHandler)
 
 router.post('/logout')
 

@@ -1,5 +1,5 @@
-import {env} from '../lib/env'
-import {createLogger, format, transports} from 'winston'
+import { env } from '../lib/env'
+import { createLogger, format, transports } from 'winston'
 
 export const logger = createLogger({
   level: 'info',
@@ -10,17 +10,16 @@ export const logger = createLogger({
     format.prettyPrint(),
   ),
   transports: [
-    new transports.File({filename: '../logs/errors.log', level: 'error'}),
-    new transports.File({filename: '../logs/app.log'}),
+    new transports.File({ filename: './src/logs/errors.log', level: 'error' }),
+    new transports.File({ filename: './src/logs/app.log' }),
   ],
 })
 
-// logs to the console if the app is in development 
+// logs to the console if the app is in development
 if (!env.isProduction) {
-  logger.add(new transports.Console({
-    format: format.combine(
-      format.colorize(),
-      format.simple(),
-    ),
-  }))
+  logger.add(
+    new transports.Console({
+      format: format.combine(format.colorize(), format.simple()),
+    }),
+  )
 }

@@ -10,4 +10,5 @@ export const env = cleanEnv(process.env, {
   PORT: num(),
   DB_LOGGING: bool(),
   SALT_ROUNDS: num(),
+  SESSION_SECRET: str(),
 })

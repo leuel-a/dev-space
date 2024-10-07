@@ -1,13 +1,27 @@
 import sequelize from '../lib/sequelize'
-import {
-  Sequelize,
-  DataTypes,
-  InferAttributes,
-  InferCreationAttributes,
-  Model,
-  CreationOptional,
-} from 'sequelize'
-import {hashPassword, comparePassword} from '../utils/password'
+import { hashPassword, comparePassword } from '../utils/password'
+import { DataTypes, InferAttributes, InferCreationAttributes, Model, CreationOptional } from 'sequelize'
+
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    User:
+ *      type: object
+ *      properties:
+ *        id:
+ *          type: number
+ *        email:
+ *          type: string
+ *        username:
+ *          type: string
+ *        createdAt:
+ *          type: string
+ *          format: date-time
+ *        updatedAt:
+ *          type: string
+ *          format: date-time
+ */
 
 export class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
   declare id: CreationOptional<number>
@@ -34,7 +48,7 @@ User.init(
     username: {
       type: new DataTypes.STRING(128),
       allowNull: false,
-      unique: true
+      unique: true,
     },
     email: {
       type: new DataTypes.STRING(128),
@@ -62,5 +76,6 @@ User.init(
         }
       },
     },
+    tableName: 'users',
   },
 )

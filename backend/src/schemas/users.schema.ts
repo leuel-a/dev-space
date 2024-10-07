@@ -37,4 +37,28 @@ export const registerUserSchema = z.object({
   }),
 })
 
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    LoginUserInput:
+ *      required:
+ *        - email
+ *        - password
+ *      properties:
+ *        email:
+ *          type: string
+ *          default: jane.doe@gmail.com
+ *        password:
+ *          type: string
+ *          default: veryStrongPassword@123
+ */
+export const loginUserSchema = z.object({
+  body: z.object({
+    email: z.string({message: 'Email is required'}).email({message: 'Email is not valid'}),
+    password: z.string({message: 'Password is required'}),
+  }),
+})
+
+export type LoginUserType = z.infer<typeof loginUserSchema>
 export type RegisterUserType = z.infer<typeof registerUserSchema>
